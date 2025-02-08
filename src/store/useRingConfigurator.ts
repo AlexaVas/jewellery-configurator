@@ -10,7 +10,7 @@ export type PearlColor = "white" | "pink" | "blue";
 export type TextureType = "polished" | "brushed" | "hammered";
 export type TextureScale = number;
 
-interface RingConfig {
+export interface RingConfig {
   model: RingModel;
   material: Material;
   pearlColor?: PearlColor;

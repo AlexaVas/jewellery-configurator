@@ -1,15 +1,13 @@
 /** @format */
 import React from "react";
 
-
+import { RingConfig } from "../store/useRingConfigurator";
 interface ListProps extends React.HTMLAttributes<HTMLDivElement> {
   label?: string;
   setter: (value: { [key: string]: number }) => void;
   target: string;
   disabled: boolean;
-  config: {
-    textureScale: number;
-  };
+  config: RingConfig;
 }
 
 export default function Slider({
