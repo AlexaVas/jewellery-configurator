@@ -31,7 +31,7 @@ export default function Loader({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* Loader - conditionally shown with fading effect */}
-      <div  className="relative h-1/2 md:h-full md:w-[60%]">
+      <div  className="relative h-1/2 md:h-full md:w-[60%] min-h-[400px]">
       <div
         className={`absolute m-6  h-full inset-0 bg-white bg-opacity-50 flex justify-center items-center z-10 transition-opacity ${
           isVisible

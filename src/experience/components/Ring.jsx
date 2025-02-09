@@ -6,7 +6,9 @@ import {useRingConfigurator} from '../../store/useRingConfigurator'
 import { Stage } from "@react-three/drei";
 import PearlMaterial from "../materials/Pearl";
 import { useFrame } from "@react-three/fiber";
+import { useRef, useEffect } from "react";
 export default function Ring({}){
+
   const { config } = useRingConfigurator();
 
   const { scene } = useGLTF(
@@ -31,13 +33,16 @@ export default function Ring({}){
   if (ringMesh) ringMesh.material = goldMaterial;
   if (pearlMesh) pearlMesh.material = pearlMaterial;
 
+
+
  useFrame((state,delta)=>{
-const elapsedTime = state.clock.elapsedTime
+  
+const elapsedTime = state.clock.elapsedTime ;
+goldMaterial.uniforms.uTime.value = elapsedTime ;
+})
 
-goldMaterial.uniforms.uTime.value = elapsedTime
 
-
- })
+ 
 
   return <Stage key={config.model} preset={"soft"}  center={true} adjustCamera={1.5}><primitive size={1} rotation={[0,0.5,0]} object={scene}></primitive>
   </Stage>;
