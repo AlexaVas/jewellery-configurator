@@ -4,6 +4,8 @@ import CustomShaderMaterial from "three-custom-shader-material/vanilla";
 import { useRingConfigurator } from "../../store/useRingConfigurator";
 import * as THREE from "three";
 import { useEffect, useMemo, useState } from "react";
+import goldVertexShader  from '../shaders/gold/vertex.glsl'
+import goldFragmentShader from "../shaders/gold/fragment.glsl";
 
 const textureCache = new Map(); // Cache textures to avoid multiple loads
 
@@ -85,14 +87,20 @@ loadingManager.onLoad = () => {
 
     return new CustomShaderMaterial({
       baseMaterial: THREE.MeshPhysicalMaterial,
-      uniforms: { uTime: { value: 0 } },
+      vertexShader: goldVertexShader,
+      fragmentShader: goldFragmentShader,
+      uniforms: {
+        uTime: { value: 0 },
+        uColor: { value: new THREE.Color(materialColor) },
+      },
       flatShading: false,
-      color: new THREE.Color(materialColor),
+      //color: new THREE.Color(materialColor),
       roughnessMap: textures?.roughnessMap || null,
       normalMap: textures?.normalMap || null,
       roughness: roughness ?? 0.5,
       metalness: metalness ?? 1,
       normalScale: new THREE.Vector2(textureScale, textureScale),
+      transparent: true,
     });
   }, [materialType, textures, textureScale]);
 

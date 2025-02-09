@@ -37,8 +37,8 @@ const PearlMaterial = () => {
 
     return new CustomShaderMaterial({
       baseMaterial: THREE.MeshPhysicalMaterial,
-      // vertexShader:"",
-      // fragmentShader:"",
+      vertexShader:"",
+      fragmentShader:"",
       uniforms: {
         uTime: {
           value: 0,

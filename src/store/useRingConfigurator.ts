@@ -28,7 +28,7 @@ interface RingConfiguratorState {
 export const useRingConfigurator = create<RingConfiguratorState>()(
   subscribeWithSelector((set) => ({
     config: {
-      model: "withPearl",
+      model: "plain",
       material: "gold",
       pearlColor: "white",
       textureType: "polished",
