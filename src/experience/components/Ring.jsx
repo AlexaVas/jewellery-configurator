@@ -92,7 +92,7 @@ export default function Ring() {
             
             renderOrder={1}
             scale={[1, 1, 1]}
-            position={[0, 0.01, 0]}
+            position={[0, 0, 0]}
             rotation={[0, 0, 0]}
             object={decalMesh}
           />

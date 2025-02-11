@@ -45,7 +45,7 @@ const CreateDecal = (mesh, texture) => {
   
   position.x =0.0 
   position.y -=1.0
-  position.z = 0.0
+  position.z = 0.01
 
   const rotation = new THREE.Euler(Math.PI * 1.5, 0, Math.PI * 2.17);
   const size = new THREE.Vector3(2, 2, 2); // Scale of the decal
