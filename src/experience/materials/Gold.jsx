@@ -105,7 +105,8 @@ const GoldMaterial = () => {
       normalMap: textures?.normalMap || null,
       roughness: roughness ?? 0.5,
       metalness: metalness ?? 1,
-      
+      transmission:0,
+      ior:2.5,
       normalScale: new THREE.Vector2(textureScale, textureScale),
       transparent: true,
     });

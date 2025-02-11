@@ -48,7 +48,7 @@ const withPearl = useRingConfigurator((state)=>state.config.model === "withPearl
               key={pageNum}
               disabled={(pageNum ===3 && !withPearl)}
               onClick={() => setCurrentPage(pageNum)}
-              className={`px-4 py-2  transition-all duration-200 rounded-full bg-mygray ${
+              className={`px-4 py-2  transition-all duration-200 ${ (pageNum ===3 && !withPearl)? "text-black/20":"text-black"} rounded-full bg-mygray ${
                 currentPage === pageNum ? "bg-peach-200" : ""
               }`}>
               {pageNum}

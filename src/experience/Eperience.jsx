@@ -1,16 +1,21 @@
 import Ring from "./components/Ring"
-import { OrbitControls,Stage } from "@react-three/drei"
+import {  OrbitControls } from "@react-three/drei"
 export default function Experience(){
 
 
 return (
   <>
-    <OrbitControls />
-    <directionalLight castShadow position={[1, 1, 1]} intensity={5.5} />
-    {/* <Stage center preset={"soft"} shadows='contact' adjustCamera={1.5}> */}
-      <Ring  />
-    {/* </Stage> */}
-    {/* <mesh><sphereGeometry></sphereGeometry></mesh> */}
+    <OrbitControls
+      minPolarAngle={-Math.PI / 5} // Restrict vertical rotation
+      maxPolarAngle={Math.PI / 2.5}
+      minAzimuthAngle={-Math.PI / 6} // Restrict horizontal rotation
+      maxAzimuthAngle={Math.PI / 2.5}
+      minDistance={4}
+      maxDistance={8}
+    />
+    <directionalLight position={[0, 3, 0]} intensity={3.5} />
+   
+    <Ring />
   </>
 );
 

@@ -47,14 +47,13 @@ export default function Ring() {
 
     if (ringMesh) {
       ringMesh.material = goldMaterial;
-
-      // Create the decal and parent it to the ringMesh
+      // Remove previous decal before creating a new one
+      setDecalMesh(null);
+      // Create the decal
       if (text) {
-
         const decal = CreateDecal(ringMesh, text);
-        if (decal) {
-          setDecalMesh(decal);
-        }
+
+        setDecalMesh(decal);
       }
     }
 
@@ -62,13 +61,14 @@ export default function Ring() {
 
     
    
-  }, [scene, text, goldMaterial, pearlMaterial]);
+  }, [text, goldMaterial, pearlMaterial,scene]);
 
   useFrame((state, delta) => {
     const elapsedTime = state.clock.elapsedTime;
     if (goldMaterial) {
       goldMaterial.uniforms.uTime.value = elapsedTime;
     }
+
   });
 
 
@@ -76,17 +76,24 @@ export default function Ring() {
   return (
     <>
       <Stage
-        key={config.model}
+        castShadow={false}
         preset={"soft"}
-        center={true}
-        adjustCamera={1.5}>
-        <primitive size={1} rotation={[0, 0.5, 0]} object={scene} />
+        adjustCamera={2}
+        shadows="contact"
+        environment={"city"}>
+        <primitive
+          scale={[1, 1, 1]}
+          position={[0, 0, 0]}
+          rotation={[0, 0.5, 0]}
+          object={scene}
+        />
         {decalMesh && (
           <primitive
-          renderOrder={1}
-            size={1}
+            
+            renderOrder={1}
+            scale={[1, 1, 1]}
             position={[0, 0.01, 0]}
-            rotation={[Math.PI, 0, 3.1]}
+            rotation={[0, 0, 0]}
             object={decalMesh}
           />
         )}{" "}
