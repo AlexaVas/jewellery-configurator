@@ -32,21 +32,20 @@ export default function Loader({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* Loader - conditionally shown with fading effect */}
-      <div  className="relative h-1/2 md:h-full md:w-[60%] min-h-[400px]">
-      <div
-        className={`absolute m-6  h-full inset-0 bg-white bg-opacity-50 flex justify-center items-center z-10 transition-opacity ${
-          isVisible
-            ? "opacity-100 visible duration-0" // Fast appearance
-            : "opacity-0 hidden duration-1000" // Slow disappearance with delay
-        }`}>
-       
+      <div className="relative h-[50vh] md:h-full md:w-[60%] min-h-[400px]">
+        <Screenshot />
+        <div
+          className={`absolute m-6  h-[100vh] inset-0 bg-white bg-opacity-50 flex justify-center items-center z-10 transition-opacity ${
+            isVisible
+              ? "opacity-100 visible duration-0" // Fast appearance
+              : "opacity-0 hidden duration-1000" // Slow disappearance with delay
+          }`}>
           <LoaderPinwheel className="w-16 h-16 stroke-peach-200  animate-spin" />
-        
-      </div>
+        </div>
 
-      {/* Render children */}
-      {children}
-      <Screenshot/>
+        {/* Render children */}
+        {children}
+        
       </div>
     </>
   );

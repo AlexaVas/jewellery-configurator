@@ -32,7 +32,7 @@ return (
   <>
     <button
       onClick={captureWebGL}
-      className="px-4 py-2 rounded-full z-20  bg-mygray shadow-md hover:bg-white transition-all absolute md:bottom-0 bottom-4  flex justify-center items-center">
+      className="px-4 py-2 rounded-full z-20  bg-mygray shadow-md hover:bg-white transition-all absolute top-0 md:top-auto md:bottom-0  flex justify-center items-center">
       <Camera className=" stroke-peach-200 " size={30} />
     </button>
   </>
