@@ -32,11 +32,11 @@ export default function Slider({
           defaultValue="1"
           disabled={disabled}
           onChange={(e) => setter({ [target]: Number(e.target.value) })}
-          className="w-[280px]  h-2  bg-mygray rounded-lg appearance-none cursor-pointer 
+          className="w-[250px] md:w-[280px]  h-2  bg-mygray rounded-lg appearance-none cursor-pointer 
                    accent-peach-100 active:accent-peach-200 hover:accent-peach-100"
         />
         <span className="bg-mygray px-4 py-2 rounded-3xl">
-          {disabled? "X":config.textureScale}
+          {disabled ? "X" : config.textureScale}
         </span>
       </div>
     </div>

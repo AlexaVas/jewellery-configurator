@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { useEffect, useMemo, useState } from "react";
 import goldVertexShader  from '../shaders/gold/vertex.glsl'
 import goldFragmentShader from "../shaders/gold/fragment.glsl";
-
+import createTextTexture from "./Text";
 const textureCache = new Map(); // Cache textures to avoid multiple loads
 
 const loadingManager = new THREE.LoadingManager()
@@ -29,13 +29,15 @@ const GoldMaterial = () => {
   const textureScale = useRingConfigurator(
     (state) => state.config.textureScale
   );
- const setTextureLoading = useRingConfigurator((state)=> state.setTextureLoading)
-loadingManager.onStart =()=>{
-setTextureLoading(true)
-}
-loadingManager.onLoad = () => {
-  setTextureLoading(false);
-};
+  const setTextureLoading = useRingConfigurator(
+    (state) => state.setTextureLoading
+  );
+  loadingManager.onStart = () => {
+    setTextureLoading(true);
+  };
+  loadingManager.onLoad = () => {
+    setTextureLoading(false);
+  };
 
   const [textures, setTextures] = useState({});
 
@@ -47,7 +49,10 @@ loadingManager.onLoad = () => {
     }),
     []
   );
-
+  const [text, setText] = useState(" Ring"); // Editable text
+  // Add text texture
+  // loadedTextures.textMap = createTextTexture(text);
+  // console.log("text", loadedTextures.textMap);
   useEffect(() => {
     const loadTextures = async () => {
       const texturePaths = {
@@ -56,7 +61,7 @@ loadingManager.onLoad = () => {
           normalMap: "/brushed_gold/Normal.png",
           displacementMap: "/brushed_gold/Height.png",
         },
-      
+
         hammered: {
           roughnessMap: "/hammered_gold/Roughness.jpeg",
           normalMap: "/hammered_gold/Normal.jpeg",
@@ -83,7 +88,7 @@ loadingManager.onLoad = () => {
   }, [textureType]);
 
   const material = useMemo(() => {
-    const { materialColor, roughness,metalness } = materialMap[materialType];
+    const { materialColor, roughness, metalness } = materialMap[materialType];
 
     return new CustomShaderMaterial({
       baseMaterial: THREE.MeshPhysicalMaterial,
@@ -92,6 +97,7 @@ loadingManager.onLoad = () => {
       uniforms: {
         uTime: { value: 0 },
         uColor: { value: new THREE.Color(materialColor) },
+        uTextMap: { value: createTextTexture(text) || null }, // Pass text texture
       },
       flatShading: false,
       //color: new THREE.Color(materialColor),
@@ -99,10 +105,11 @@ loadingManager.onLoad = () => {
       normalMap: textures?.normalMap || null,
       roughness: roughness ?? 0.5,
       metalness: metalness ?? 1,
+      
       normalScale: new THREE.Vector2(textureScale, textureScale),
       transparent: true,
     });
-  }, [materialType, textures, textureScale]);
+  }, [materialType, textures, textureScale, text]);
 
   return material;
 };

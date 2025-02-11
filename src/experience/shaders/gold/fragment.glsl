@@ -5,8 +5,20 @@ varying vec3 vPosition;
 
 uniform float uTime;
 uniform vec3 uColor;
+uniform sampler2D uTextMap; // Add text texture uniform
+
 float random(vec2 uv) {
     return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453);
+}
+
+// Function to rotate UV coordinates
+vec2 rotateUV(vec2 uv, float angle) {
+    float cosAngle = cos(angle);
+    float sinAngle = sin(angle);
+    return vec2(
+        uv.x * cosAngle - uv.y * sinAngle,
+        uv.x * sinAngle + uv.y * cosAngle
+    );
 }
 void main() {
    
@@ -28,9 +40,7 @@ void main() {
     float transparency = smoothstep( progress + transitionWidth + noise, progress, mask);
 
 
-    
-    // Set the final color
-    csm_DiffuseColor = vec4(uColor, transparency);
-
+     csm_DiffuseColor = vec4(uColor, transparency);
 
 }
+

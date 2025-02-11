@@ -8,13 +8,14 @@ interface Option<T> {
 }
 
 interface DropdownProps<T> {
-  label?: string,
+  label?: string;
   options: Option<T>[];
   setter: (value: { [key: string]: T }) => void;
   currentValue?: T;
   placeholder?: string;
-  target:string;
+  target: string;
 }
+
 
 export default function Dropdown<T>({
   label='material',
@@ -49,7 +50,7 @@ export default function Dropdown<T>({
           {/* Dropdown Button */}
           <button
             onClick={() => setIsOpen((prev) => !prev)}
-            className="px-4 py-2 bg-peach-200 min-w-fit w-[280px] group justify-between rounded-full  transition-all flex gap-2 items-center">
+            className="px-4 py-2 bg-peach-200  w-[250px] md:w-[280px] group justify-between rounded-full  transition-all flex gap-2 items-center">
             {/* Label */}
           
 
