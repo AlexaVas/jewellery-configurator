@@ -12,9 +12,9 @@ export default function ThreeCanvas({
         fov: 45,
         near: 0.1,
         far: 200,
-        position: [5, 5,5],
+        position: [5, 5, 5],
       }}>
-<Experience/>
+      <Experience />
     </Canvas>
   );
 }

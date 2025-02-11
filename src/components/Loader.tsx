@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useRingConfigurator } from "../store/useRingConfigurator";
 import { LoaderPinwheel } from "lucide-react";
+import Screenshot from "./Screenshot";
 
 export default function Loader({ children }: { children: React.ReactNode }) {
   const textureLoading = useRingConfigurator((state) => state.textureLoading);
@@ -44,7 +45,9 @@ export default function Loader({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Render children */}
-      {children}</div>
+      {children}
+      <Screenshot/>
+      </div>
     </>
   );
 }

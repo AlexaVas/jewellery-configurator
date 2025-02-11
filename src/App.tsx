@@ -2,6 +2,7 @@
 import Canvas from './experience/Canvas.jsx'
 import PaginationUI from './components/PaginationUI.js';
 import Loader from './components/Loader.js';
+
 export default function App() {
 
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <PaginationUI/>
       </div>
     </section>
+   
     </>
   );
 }

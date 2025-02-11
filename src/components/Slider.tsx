@@ -29,7 +29,8 @@ export default function Slider({
           min="0.5"
           max="2"
           step={0.5}
-          defaultValue="1"
+          value={config.textureScale}
+          // defaultValue="1"
           disabled={disabled}
           onChange={(e) => setter({ [target]: Number(e.target.value) })}
           className="w-[250px] md:w-[280px]  h-2  bg-mygray rounded-lg appearance-none cursor-pointer 
