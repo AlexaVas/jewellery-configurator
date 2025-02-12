@@ -20,6 +20,7 @@ export default function Share() {
         await navigator.share({
           title: "Check out this ring!",
           text: "Look at this cool ring I designed!",
+          url:"https://jewellery-configurator.vercel.app",
           files: [file],
         });
       } 
