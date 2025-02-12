@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRingConfigurator } from "../store/useRingConfigurator";
 import { LoaderPinwheel } from "lucide-react";
 import Screenshot from "./Screenshot";
+import Share from "./Share";
 
 export default function Loader({ children }: { children: React.ReactNode }) {
   const textureLoading = useRingConfigurator((state) => state.textureLoading);
@@ -33,7 +34,12 @@ export default function Loader({ children }: { children: React.ReactNode }) {
     <>
       {/* Loader - conditionally shown with fading effect */}
       <div className="relative h-[50vh] md:h-full md:w-[60%] min-h-[400px]">
-        <Screenshot />
+
+        <div className="absolute top-0 md:top-auto md:bottom-0 flex gap-4 md:flex-row flex-col ">
+          <Screenshot />
+          <Share />
+        </div>
+
         <div
           className={`absolute m-6  h-full inset-0 bg-white bg-opacity-50 flex justify-center items-center z-10 transition-opacity ${
             isVisible
@@ -45,7 +51,6 @@ export default function Loader({ children }: { children: React.ReactNode }) {
 
         {/* Render children */}
         {children}
-        
       </div>
     </>
   );

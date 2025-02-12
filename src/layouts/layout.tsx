@@ -18,7 +18,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       <main className=" h-full w-full min-h-fit p-6 md:pb-6 pb-[15vh] ">
         {children}
       </main>
-      <footer className="w-full md:absolute relative p-2 bottom-0  z-30 text-center text-xs">
+      <footer className="w-full text-gray-400 md:absolute relative p-2 bottom-0  z-30 text-center text-xs">
         {" "}
         Developed by Alexandra Vašínová © {new Date().getFullYear()}
       </footer>
