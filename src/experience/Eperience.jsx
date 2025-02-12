@@ -13,7 +13,7 @@ return (
       minDistance={4}
       maxDistance={8}
     />
-    <directionalLight position={[0, 3, 0]} intensity={3.5} />
+    <directionalLight position={[0, 3, 0]} intensity={5.5} />
    
     <Ring />
   </>

@@ -78,6 +78,7 @@ export default function Ring() {
       <Stage
         castShadow={false}
         preset={"soft"}
+        intensity={2}
         adjustCamera={2}
         shadows="contact"
         environment={"city"}>

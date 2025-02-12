@@ -38,7 +38,7 @@ export const useRingConfigurator = create<RingConfiguratorState>()(
       material: "gold",
       pearlColor: "white",
       textureType: "polished",
-      textureScale: 2,
+      textureScale: 1,
       textConfig: {
         text: "",
         fontFamily: "cursive",
